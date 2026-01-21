@@ -8,11 +8,12 @@ import { ThemeProvider } from "@/components/theme-provider"
  const queryclinet= new QueryClient();
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <QueryClientProvider client={queryclinet}>
-         <App />
-      </QueryClientProvider>
-    </ThemeProvider>
+        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+        <QueryClientProvider client={queryclinet}>
+          <App />
+        </QueryClientProvider>
+      </ThemeProvider>
+   
       
   </StrictMode>,
 )

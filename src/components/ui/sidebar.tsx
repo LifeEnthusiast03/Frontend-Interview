@@ -326,6 +326,7 @@ function SidebarInput({
       data-sidebar="input"
       className={cn("bg-background h-8 w-full shadow-none", className)}
       {...props}
+      
     />
   )
 }
