@@ -17,7 +17,6 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import {
-  Field,
   FieldDescription,
   FieldError,
   FieldGroup,
@@ -25,9 +24,7 @@ import {
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupText,
+
   InputGroupTextarea,
 } from "@/components/ui/input-group"
 
@@ -88,7 +85,7 @@ export function BlogPostForm() {
         coverImage: value.coverImage,
         content: value.content,
       }
-        const success = await createBlog(blogPost);
+         await createBlog(blogPost);
         // console.log(success);
         
       toast("Blog post submitted successfully!", {
