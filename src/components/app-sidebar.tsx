@@ -6,17 +6,16 @@ import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarHeader,
-  SidebarInput,
 } from "@/components/ui/sidebar"
 // This is sample data
 import { useBlogs } from "@/context/BlogContext"
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const {blogs} = useBlogs();
+  const {blogs,setCurBlogId} = useBlogs();
   
-  // const handleselect = (e:Event)=>{
-              
-  // }
+  const handleselect = (blogId: string) => {
+     setCurBlogId(parseInt(blogId))
+  }
   return (
     <Sidebar
       className="overflow-hidden *:data-[sidebar=sidebar]:flex-row"
@@ -32,14 +31,21 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       {/* We disable collapsible and let it fill remaining space */}
       <Sidebar collapsible="none" className="hidden flex-1 md:flex">
         <SidebarHeader className="gap-3.5 border-b p-4">
-          <SidebarInput placeholder="Type to search..." />
+            <div className="flex items-center justify-between px-2 py-1">
+              <h2 className="text-xs font-semibold text-sidebar-foreground/70 uppercase tracking-wide">
+                All Blogs
+              </h2>
+              <span className="text-xs text-sidebar-foreground/50">
+                {blogs.length}
+              </span>
+            </div>
         </SidebarHeader>
         <SidebarContent>
           <SidebarGroup className="px-0">
             <SidebarGroupContent >
               {blogs.map((blog) => (
                 <a
-                  href="#"
+                  onClick={() => handleselect(blog.id)}
                   key={blog.id}
                   className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground flex flex-col items-start gap-2 border-b p-4 text-sm leading-tight whitespace-nowrap last:border-b-0"
                 >

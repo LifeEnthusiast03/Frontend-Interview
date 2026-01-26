@@ -34,6 +34,26 @@ const getBlogById = async (id: string): Promise<Blog | null> => {
     return null;
   }
 };
-
-export {getBlogById,getBlogs};
+const postBlogs = async (blog:Blog):Promise<Blog|null>=>{
+        try{
+            const response = await fetch("http://localhost:3001/blogs",
+              {
+                method:"POST",
+                headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify(blog),
+              }
+            )
+            if(!response.ok){
+               throw new Error("Failed to create blog");
+            }
+            return  response.json();
+        }
+        catch(error){
+          console.error("can not post data", error);
+            return null; 
+        }
+}
+export {getBlogById, getBlogs, postBlogs};
 export type{Blog};
